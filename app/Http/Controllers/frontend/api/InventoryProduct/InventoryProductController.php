@@ -74,8 +74,8 @@ class InventoryProductController extends Controller
             $cate_code = $categoryCode->category_code;
         }
 
-        print_r($cate_code);
-        exit();
+        // print_r($cate_code);
+        // exit();
 
         $product = new InventoryProduct();
         $product->category_id = $request->category_id;

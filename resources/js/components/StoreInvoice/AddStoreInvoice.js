@@ -58,11 +58,11 @@ class AddStoreInvoice extends Component {
             toggle: true,
             invoice_code: [],
             remarks: "",
-            warehouse_id: 0,
-            vendor_id: "",
+            warehouse_id: 1,
+            vendor_id: 1,
             vendorlist: [],
             date: year + "-" + month + "-" + date,
-            store_id: "",
+            store_id: 1,
             storelist: [],
             gross_amount: "",
             discount_taka: 0,
@@ -201,8 +201,8 @@ class AddStoreInvoice extends Component {
         // event.preventDefault();
         const idx = this.props.match.params.idx;
 
-        const res = await axios.post(defaultRouteLink +
-            "/api/save-storeinvoice",
+        const res = await axios.post(
+            defaultRouteLink + "/api/save-storeinvoice",
             this.state
         );
 
@@ -285,6 +285,9 @@ class AddStoreInvoice extends Component {
             var id = e[0].id;
             this.getProductWisePriceAuto(id);
         }
+    };
+    refreshPage = () => {
+        window.location.reload(false);
     };
 
     WarehousehandleInput = event => {
@@ -554,8 +557,8 @@ class AddStoreInvoice extends Component {
                 }
             });
         } else {
-            const res = await axios.post(defaultRouteLink+
-                "/api/save-storeinvoice",
+            const res = await axios.post(
+                defaultRouteLink + "/api/save-storeinvoice",
                 this.state
             );
 
@@ -696,8 +699,8 @@ class AddStoreInvoice extends Component {
         } else {
             let check = confirm("are you sure ??");
             if (check) {
-                const res = await axios.post(defaultRouteLink +
-                    "/api/save-store-invoice",
+                const res = await axios.post(
+                    defaultRouteLink + "/api/save-store-invoice",
                     this.state
                 );
                 this.state = {
@@ -725,7 +728,9 @@ class AddStoreInvoice extends Component {
 
                 // SUCCESS MESSAGE USING SWEET ALERT
                 if (res.data.status === 200) {
-                    this.props.history.push(defaultRouteLink+"/manage-store-invoice");
+                    this.props.history.push(
+                        defaultRouteLink + "/manage-store-invoice"
+                    );
                     const Toast = Swal.mixin({
                         toast: true,
                         position: "top-end",
@@ -885,7 +890,6 @@ class AddStoreInvoice extends Component {
             });
 
             return false;
-
         }
     };
     handleModalClose = () => {
@@ -1155,7 +1159,7 @@ class AddStoreInvoice extends Component {
                         <div className="col-md-12">
                             <div style={{ marginTop: 30 }}>
                                 <Link
-                                    to={defaultRouteLink+`/new-purshase/${1}`}
+                                    to={defaultRouteLink + `/new-purshase/${1}`}
                                     type="button"
                                     className="btn btn-danger"
                                     style={{ marginLeft: 15 }}
@@ -1163,7 +1167,10 @@ class AddStoreInvoice extends Component {
                                     New Purshase
                                 </Link>
                                 <Link
-                                    to={defaultRouteLink+`/purshase-return/${2}`}
+                                    to={
+                                        defaultRouteLink +
+                                        `/purshase-return/${2}`
+                                    }
                                     type="button"
                                     className="btn btn-info"
                                     style={{ marginLeft: 15 }}
@@ -1171,7 +1178,7 @@ class AddStoreInvoice extends Component {
                                     Purshase Return{" "}
                                 </Link>
                                 <Link
-                                    to={defaultRouteLink+`/sale/${3}`}
+                                    to={defaultRouteLink + `/sale/${3}`}
                                     type="button"
                                     className="btn btn-success"
                                     style={{ marginLeft: 15 }}
@@ -1179,7 +1186,7 @@ class AddStoreInvoice extends Component {
                                     Sale{" "}
                                 </Link>
                                 <Link
-                                    to={defaultRouteLink+`/sale-return/${4}`}
+                                    to={defaultRouteLink + `/sale-return/${4}`}
                                     type="button"
                                     className="btn btn-warning"
                                     style={{ marginLeft: 15 }}
@@ -1187,37 +1194,53 @@ class AddStoreInvoice extends Component {
                                     Sale Return
                                 </Link>
                                 <Link
-                                    to={defaultRouteLink+`/quick-purshase/${5}`}
+                                    to={
+                                        defaultRouteLink +
+                                        `/quick-purshase/${5}`
+                                    }
                                     type="button"
                                     className="btn btn-primary"
                                     style={{ marginLeft: 15 }}
                                 >
                                     Quick Purshase
                                 </Link>
-                                <Link to={defaultRouteLink+`/issue/${6}`}
-                                type="button"
-                                className="btn btn-outline-secondary"
-                                style={{ marginLeft: 15 }}
+                                <Link
+                                    to={defaultRouteLink + `/issue/${6}`}
+                                    type="button"
+                                    className="btn btn-outline-secondary"
+                                    style={{ marginLeft: 15 }}
                                 >
                                     Issue
                                 </Link>
 
-                                <Link to={defaultRouteLink+`/issue-return/${7}`}
-                                type="button"
-                                className="btn btn-outline-info"
-                                style={{ marginLeft: 15 }}
+                                <Link
+                                    to={defaultRouteLink + `/issue-return/${7}`}
+                                    type="button"
+                                    className="btn btn-outline-info"
+                                    style={{ marginLeft: 15 }}
                                 >
                                     Issue Return
                                 </Link>
 
                                 <Link
-                                    to={defaultRouteLink+`/manage-store-invoice`}
+                                    to={
+                                        defaultRouteLink +
+                                        `/manage-store-invoice`
+                                    }
                                     type="button"
                                     className="btn btn-dark"
                                     style={{ marginLeft: 15 }}
                                 >
                                     Manage Invoice
                                 </Link>
+                                <button
+                                    onClick={this.refreshPage}
+                                    type="button"
+                                    className="btn btn-danger"
+                                    style={{ marginLeft: 35 }}
+                                >
+                                    Refresh
+                                </button>
                             </div>
 
                             <h2 className="text-center">Transaction</h2>
@@ -1299,13 +1322,13 @@ class AddStoreInvoice extends Component {
                                                                             .handleInput
                                                                     }
                                                                 >
-                                                                    <option
+                                                                    {/* <option
                                                                         selected
                                                                         value="0"
                                                                     >
                                                                         Choose
                                                                         One
-                                                                    </option>
+                                                                    </option> */}
                                                                     {vendors}
                                                                 </select>
                                                             </div>

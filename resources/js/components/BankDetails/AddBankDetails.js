@@ -173,7 +173,7 @@ class AddBankDetails extends Component {
                                             <input
                                                 type="text"
                                                 className="form-control"
-                                                placeholder="phone"
+                                                placeholder="Account Number"
                                                 name="account_number"
                                                 required
                                                 value={

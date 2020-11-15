@@ -9,6 +9,16 @@ export const getApiServerDashboard="http://supporta2z.com/vendor_panel/admin_das
 export const defaultRouteLink="/vendor_panel";
 
 */
+import moment from "moment";
+
+export function getCurrentDate(separator=''){
+
+    //let date= moment().format("DD-MM-YYYY hh:mm:ss");
+
+    let date= moment().format("YYYY-MM-DD");
+    console.log("date="+date);
+    return date;
+    }
 
 export const getApiServerLinkDataApi = "http://localhost/dbBackup/api/";
 export const getApiServerLink = "http://localhost/dbBackup/";

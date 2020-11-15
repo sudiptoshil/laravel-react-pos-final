@@ -36,7 +36,7 @@ class CreateCustomer extends Component {
     // GET ALL WAREHOUSE LIST
     fetchallwarehouse = async () => {
         const response = await axios.get(
-            defaultRouteLink + "/api/all-warehouse"
+            defaultRouteLink + "/api/all-data"
         );
         console.log(response);
 

@@ -152,7 +152,7 @@ class StoreInvoiceController extends Controller
             ->select('invoice_trasections.*', 'vats.vat_name', 'vats.value', 'inventory_products.product_name')
             ->where('invoice_id', $invoice_id)
             ->where('type', $types)
-            ->where('trash', 1)
+            ->where('invoice_trasections.trash', 1)
         // ->where('publishing_by','=',$user_id)
             ->get();
 
